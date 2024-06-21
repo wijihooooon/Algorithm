@@ -53,3 +53,42 @@ public class Main {
 	}
 
 }
+
+/*
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class boj1560_2 {
+   
+	public static int n, r;
+    public static int[] arr; // 원소를 저장할 배열
+    public static StringBuilder sb;
+    public static void main(String[] args) throws IOException{
+    	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    	StringTokenizer st = new StringTokenizer(br.readLine());
+    	sb = new StringBuilder();
+        n = Integer.parseInt(st.nextToken());
+        r = Integer.parseInt(st.nextToken());
+        arr = new int[r];
+        
+        combination(0,1);
+        System.out.println(sb);
+    }
+	// 조합
+    private static void combination(int cnt, int start) {
+        if (cnt == r) {
+        	for(int i=0; i<r; i++) {
+        		sb.append(arr[i]).append(" ");
+        	}
+        	sb.append("\n");
+        	return;
+        }
+        for (int i = start; i <= n; i++) {
+            arr[cnt] = i;
+            combination(cnt + 1, i + 1); // 오름차순으로 구하면 중복 체크하지 않아도 됨
+        }
+    }
+}
+*/
