@@ -21,6 +21,11 @@ public class Main {
 			coin[i] = Integer.parseInt(br.readLine());
 		}
 		
+        // 현재 동전보다 금액이 크면 dp[j] = d[j] + dp[j - coin[j]]
+        // 작으면 dp[j]++
+        // ex 동전은 2 -> 금액 |1|2|3|4|5|6|
+        //         가능한 조합 |0|1|1|2|2|3|
+        // 금액에서 동전의 금액만큼 뺸 위치에서 +1
 		for(int i=0; i<N; i++) {
 			for(int j=coin[i]; j<=K; j++) {
 				if(j > coin[i]) {
