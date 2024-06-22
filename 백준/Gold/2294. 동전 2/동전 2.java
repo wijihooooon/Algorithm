@@ -25,11 +25,9 @@ public class Main {
 		dp[0] = 0;
 		
 		for(int i=0; i<N; i++) { //동전배열
-			//if(K >= coin[i]) {
 				for(int j=coin[i]; j<=K; j++) { //금액 배열
 					dp[j] = Math.min(dp[j], dp[j - coin[i]] + 1);
-				//}
-			}
+				}		
 		}
 		
 		if(dp[K] == 10001) {
