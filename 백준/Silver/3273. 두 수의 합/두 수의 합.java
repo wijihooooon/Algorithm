@@ -3,31 +3,32 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
-// 투포인터 연습
-class Main {
 
-	public static void main(String[] args) throws IOException{
+public class Main {
+
+	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
 		
 		int N = Integer.parseInt(br.readLine());
-		int n[] = new int[N];
-		StringTokenizer st = new StringTokenizer(br.readLine());
+		int arr[] = new int[N];
 		
-		for(int j=0; j<N; j++) {
-			n[j] = Integer.parseInt(st.nextToken());
+		st = new StringTokenizer(br.readLine());
+		for(int i=0; i<N; i++) {
+			arr[i] = Integer.parseInt(st.nextToken());
 		}
 		
-		Arrays.parallelSort(n);
+		Arrays.sort(arr);
 		
 		int X = Integer.parseInt(br.readLine());
-		int count = 0;
 		
 		int start = 0;
-		int end =  N - 1;
+		int end = N-1;
+		int count = 0;
 		int sum = 0;
 		
-		while(start < end) {
-			sum = n[start] + n[end];
+		while(start < end){
+			sum = arr[start] + arr[end];
 			if(sum == X) {
 				count++;
 			}
@@ -38,7 +39,6 @@ class Main {
 				end--;
 			}
 		}
-		
 		System.out.println(count);
 	}
 
