@@ -4,63 +4,59 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class Main {
-	
 	public static int arr[];
-	
 	public static void main(String[] args) throws IOException{
-		BufferedReader br = new  BufferedReader(new InputStreamReader(System.in));
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		StringBuilder sb = new StringBuilder();
 		
 		int N = Integer.parseInt(st.nextToken());
 		int M = Integer.parseInt(st.nextToken());
-	
+		
 		arr = new int[N+1];
 		
-		for(int i=0; i<N+1; i++) {
+		for(int i=0; i<=N; i++) {
 			arr[i] = i;
 		}
 		
 		for(int i=0; i<M; i++) {
 			st = new StringTokenizer(br.readLine());
+			
 			int check = Integer.parseInt(st.nextToken());
+			int a = Integer.parseInt(st.nextToken());
+			int b = Integer.parseInt(st.nextToken());
 			
-			int x = Integer.parseInt(st.nextToken());
-			int y = Integer.parseInt(st.nextToken());
-			
-			if(check == 1) { // 1이면 확인
-				if (find(x) == find(y)) {
-					sb.append("YES").append("\n");
+			if(check == 1) { // 확인하는 연산
+				if(find(a) == find(b)) {
+					sb.append("YES\n");
 				}else {
-					sb.append("NO").append("\n");
+					sb.append("NO\n");
 				}
-			}else { // 0이면 합집합
-				union(x, y);
+			}else { // union 연산
+				union(a, b);
 			}
 		}
-		
 		System.out.println(sb);
 	}
 
-	private static void union(int x, int y) {
-		x = find(x);
-		y = find(y);
+	private static void union(int a, int b) {
+		a = find(a);
+		b = find(b);
 		
-		if(x != y) {
-			if(x < y) {
-				arr[x] = y;
+		if(a != b) {
+			if(a < b) {
+				arr[b] = a;
 			}else {
-				arr[y] = x;
+				arr[a] = b;
 			}
 		}
-		
 	}
 
-	private static int find(int x) {
-		if(x == arr[x]) {
-			return x;
+	private static int find(int a) {
+		if(a == arr[a]) {
+			return a;
 		}
-		return arr[x] = find(arr[x]);
+		return arr[a] = find(arr[a]);
 	}
 
 }
