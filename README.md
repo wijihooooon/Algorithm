@@ -105,6 +105,7 @@
 |2493. 탑|[링크](./%EB%B0%B1%EC%A4%80/Gold/2493.%E2%80%85%ED%83%91/README.md)|
 |2589. 보물섬|[링크](./%EB%B0%B1%EC%A4%80/Gold/2589.%E2%80%85%EB%B3%B4%EB%AC%BC%EC%84%AC/%EB%B3%B4%EB%AC%BC%EC%84%AC.java)|
 |2636. 치즈|[링크](./%EB%B0%B1%EC%A4%80/Gold/2636.%E2%80%85%EC%B9%98%EC%A6%88/%EC%B9%98%EC%A6%88.java)|
+|3055. 탈출|[링크](./%EB%B0%B1%EC%A4%80/Gold/3055.%E2%80%85%ED%83%88%EC%B6%9C/README.md)|
 |3067. Coins|[링크](./%EB%B0%B1%EC%A4%80/Gold/3067.%E2%80%85Coins/Coins.java)|
 |4179. 불！|[링크](./%EB%B0%B1%EC%A4%80/Gold/4179.%E2%80%85%EB%B6%88%EF%BC%81/README.md)|
 |5557. 1학년|[링크](./%EB%B0%B1%EC%A4%80/Gold/5557.%E2%80%851%ED%95%99%EB%85%84/README.md)|
