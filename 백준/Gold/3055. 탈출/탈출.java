@@ -72,6 +72,7 @@ public class Main {
 				int cy = y + dy[i];
 				
 				if(cx>=0 && cy>=0 && cx<N && cy<M) {
+					// 비버집인 경우, 물이 없는경우, 물이 고슴도치보다 늦게 차는 경우
 					if(map[cx][cy] == -1 || map[cx][cy] == 0 || map[cx][cy] > map[x][y] + 1 ) {
 						hedgehog.add(new int[] {cx, cy});
 						map[cx][cy] = map[x][y] + 1;
