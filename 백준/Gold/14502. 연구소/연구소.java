@@ -13,15 +13,13 @@ public class Main {
 	public static int max = 0;
 	
 	public static int map[][];
-	public static int copyMap[][];
-	
+	public static int tempMap[][];
 	public static ArrayList<int[]> virusList = new ArrayList<>();
-	public static boolean visited[][];
+
 	public static int dx[] = {-1, 1, 0, 0};
 	public static int dy[] = {0, 0, -1, 1};
 	
 	public static Queue<int[]> q = new LinkedList<>(); // 바이러스용 q~
-	public static Queue<int[]>copyQ = new LinkedList<>();
 	
 	public static void main(String[] args) throws IOException{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -30,25 +28,22 @@ public class Main {
 		N = Integer.parseInt(st.nextToken());
 		M = Integer.parseInt(st.nextToken());
 		
+		space = N * M -3;
 		map = new int[N][M];
-		
-		visited = new boolean[N][M];
+		tempMap = new int[N][M];
 		
 		for(int i=0; i<N; i++) {
 			st = new StringTokenizer(br.readLine());
 			for(int j=0; j<M; j++) {
 				map[i][j] = Integer.parseInt(st.nextToken());
 				if(map[i][j] == 1) {
-					wall++;
 					space--;
 				}else if(map[i][j] == 2) {
-					virus++;
 					space--;
 					virusList.add(new int[] {i, j});
 				}
 			}
-		}
-		
+		}	
 		
 		buildTheWall(0);
 		
@@ -59,23 +54,14 @@ public class Main {
 	private static void buildTheWall(int cnt) {
 		if(cnt == 3) {
 			bfs();
-			while(!copyQ.isEmpty()) {
-				int x = copyQ.peek()[0];
-				int y = copyQ.peek()[1];
-				copyQ.poll();
-				
-				map[x][y] = 0;
-			}
 			return;
 		}
 		
 		for(int i=0; i<N; i++) {
 			for(int j=0; j<M; j++) {
-				if(map[i][j] == 0 && !visited[i][j]) {
-					visited[i][j] = true;
+				if(map[i][j] == 0) {
 					map[i][j] = 1;
 					buildTheWall(cnt+1);
-					visited[i][j] = false;
 					map[i][j] = 0;
 				}
 			}
@@ -83,7 +69,12 @@ public class Main {
 	}
 
 	private static void bfs() {
-		space = N*M - virus - wall;
+		
+		for (int i = 0; i < N; i++) {
+			// 배열을 다른 배열에 복사할때 사용
+			// 원본배열, 복사할 시작지점, 대상배열, 복사받을 시작지점, 복사할 요소의 수
+            System.arraycopy(map[i], 0, tempMap[i], 0, M);
+        }
 		
 		for(int i=0; i<virusList.size(); i++) {
 			q.add(new int[] {virusList.get(i)[0], virusList.get(i)[1]});
@@ -101,10 +92,9 @@ public class Main {
 				int cy = y + dy[i];
 				
 				if(cx>=0 && cy>=0 && cx<N && cy<M) {
-					if(map[cx][cy] == 0) {
-						map[cx][cy] = 2;
+					if(tempMap[cx][cy] == 0) {
+						tempMap[cx][cy] = 2;
 						q.add(new int[] {cx, cy});
-						copyQ.add(new int[] {cx, cy});
 						newVirus++;
 					}
 				}
@@ -112,5 +102,4 @@ public class Main {
 		}
 		max = Math.max(max, space-newVirus);
 	}
-
 }
