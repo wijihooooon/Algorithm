@@ -10,6 +10,7 @@ public class Main {
 	public static char map[][];
 	// 선생님 좌표 모집
 	public static ArrayList<int[]> tList = new ArrayList<>();
+	// 백트래킹을 끝낼 조건
 	public static boolean endSign = false;
 	
 	public static void main(String[] args) throws IOException{
@@ -31,6 +32,8 @@ public class Main {
 		}
 		
 		buildTheWall(0);
+		
+		// endSign에 따라 YES/NO 출력
 		if(endSign) {
 			System.out.println("YES");
 		}else {
@@ -39,6 +42,9 @@ public class Main {
 		
 	}
 
+	// 빈공간이 있으면 장애물을 세우고 장애물 개수가 3이면 학생이 안전한지 확인
+	// 만약 학생들이 안전하면 endSign을 true바꾸고 모든 조건 종료
+	// 만약 학생들이 안전하지 않으면 그대로 계속 백트래킹 진행
 	private static void buildTheWall(int cnt) {
 		if(endSign) {
 			return;
@@ -62,6 +68,7 @@ public class Main {
 		}
 	}
 
+	// 선생님 좌표를 기준으로 상하좌우 체크하고 학생이 있는지 확인
 	private static boolean safeCheck() {
 		int dx[] = {-1, 1, 0, 0}; // 상 하 좌 우
 		int dy[] = {0, 0, -1, 1};
