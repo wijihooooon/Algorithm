@@ -57,7 +57,7 @@ public class Main {
 				visited[i] = true;
 				
 				int newCount = count;
-				
+				// 문자열을 수정하는 연산을 할때마다 새로운 문자역 객체가 생성되기 때문에 메모리 사용량 증가와 추가적인 연산 비용을 초래할 수 있다.
 				if(lastIndex != -1 && light[lastIndex].charAt(light[lastIndex].length() - 1) != light[i].charAt(0)) {
 					newCount++;
 				}
