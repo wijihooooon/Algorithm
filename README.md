@@ -10,6 +10,7 @@
 | ----- | ----- |
 |1289. 원재의 메모리 복구하기|[링크](./SWEA/D3/1289.%E2%80%85%EC%9B%90%EC%9E%AC%EC%9D%98%E2%80%85%EB%A9%94%EB%AA%A8%EB%A6%AC%E2%80%85%EB%B3%B5%EA%B5%AC%ED%95%98%EA%B8%B0/README.md)|
 |5215. 햄버거 다이어트|[링크](./SWEA/D3/5215.%E2%80%85%ED%96%84%EB%B2%84%EA%B1%B0%E2%80%85%EB%8B%A4%EC%9D%B4%EC%96%B4%ED%8A%B8/README.md)|
+|5642. ［Professional］ 합|[링크](./SWEA/D3/5642.%E2%80%85%EF%BC%BBProfessional%EF%BC%BD%E2%80%85%ED%95%A9/README.md)|
 ### 🚀 D4
 | 문제번호 | 링크 |
 | ----- | ----- |
