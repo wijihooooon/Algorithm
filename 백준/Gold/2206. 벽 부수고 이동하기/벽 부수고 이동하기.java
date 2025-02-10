@@ -40,7 +40,7 @@ public class Main {
         ArrayDeque<Point> q = new ArrayDeque<>();
         q.add(new Point(0, 0, 1));
         visited[0][0][0] = true;
-        visited[0][0][1] = true;
+        //visited[0][0][1] = true;
 
         while(!q.isEmpty()){
             Point p = q.poll();
