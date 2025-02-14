@@ -162,6 +162,7 @@
 |7569. 토마토|[링크](./%EB%B0%B1%EC%A4%80/Gold/7569.%E2%80%85%ED%86%A0%EB%A7%88%ED%86%A0/%ED%86%A0%EB%A7%88%ED%86%A0.java)|
 |7576. 토마토|[링크](./%EB%B0%B1%EC%A4%80/Gold/7576.%E2%80%85%ED%86%A0%EB%A7%88%ED%86%A0/%ED%86%A0%EB%A7%88%ED%86%A0.java)|
 |9084. 동전|[링크](./%EB%B0%B1%EC%A4%80/Gold/9084.%E2%80%85%EB%8F%99%EC%A0%84/%EB%8F%99%EC%A0%84.java)|
+|9140. Přeprava materiálu|[링크](./%EB%B0%B1%EC%A4%80/Gold/9140.%E2%80%85P%C5%99eprava%E2%80%85materi%C3%A1lu/README.md)|
 |9663. N－Queen|[링크](./%EB%B0%B1%EC%A4%80/Gold/9663.%E2%80%85N%EF%BC%8DQueen/N%EF%BC%8DQueen.java)|
 ### 🚀 Silver
 | 문제번호 | 링크 |
