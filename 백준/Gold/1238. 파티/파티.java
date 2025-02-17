@@ -65,6 +65,8 @@ public class Main {
 		while(!pq.isEmpty()) {
 			Node now = pq.poll();
 			
+			if(dis[now.city] < now.cost) continue;
+			
 			for(Node node : graph[now.city]) {
 				if(dis[node.city] > dis[now.city] + node.cost) {
 					dis[node.city] = dis[now.city] + node.cost;
