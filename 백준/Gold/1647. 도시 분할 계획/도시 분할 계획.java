@@ -32,13 +32,17 @@ public class Main {
 
         int ans = 0;
         int max = 0;
+        int edgeCount = 0;
+
         for(int i=0; i<M; i++){
+            if(edgeCount == N-1) break;
             int u = edge[i].from;
             int v = edge[i].to;
             int cost = edge[i].cost;
 
             if(!union(u, v)) continue;
             max = Math.max(max, cost);
+            edgeCount++;
             ans += cost;
         }
         System.out.println(ans - max);
