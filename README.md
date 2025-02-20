@@ -163,6 +163,7 @@
 |2573. 빙산|[링크](./%EB%B0%B1%EC%A4%80/Gold/2573.%E2%80%85%EB%B9%99%EC%82%B0/%EB%B9%99%EC%82%B0.java)|
 |2589. 보물섬|[링크](./%EB%B0%B1%EC%A4%80/Gold/2589.%E2%80%85%EB%B3%B4%EB%AC%BC%EC%84%AC/%EB%B3%B4%EB%AC%BC%EC%84%AC.java)|
 |2636. 치즈|[링크](./%EB%B0%B1%EC%A4%80/Gold/2636.%E2%80%85%EC%B9%98%EC%A6%88/%EC%B9%98%EC%A6%88.java)|
+|2638. 치즈|[링크](./%EB%B0%B1%EC%A4%80/Gold/2638.%E2%80%85%EC%B9%98%EC%A6%88/%EC%B9%98%EC%A6%88.java)|
 |3020. 개똥벌레|[링크](./%EB%B0%B1%EC%A4%80/Gold/3020.%E2%80%85%EA%B0%9C%EB%98%A5%EB%B2%8C%EB%A0%88/%EA%B0%9C%EB%98%A5%EB%B2%8C%EB%A0%88.java)|
 |3055. 탈출|[링크](./%EB%B0%B1%EC%A4%80/Gold/3055.%E2%80%85%ED%83%88%EC%B6%9C/%ED%83%88%EC%B6%9C.java)|
 |3067. Coins|[링크](./%EB%B0%B1%EC%A4%80/Gold/3067.%E2%80%85Coins/Coins.java)|
