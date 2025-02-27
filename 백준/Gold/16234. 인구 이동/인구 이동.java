@@ -1,10 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class Main {
 
@@ -41,10 +38,9 @@ public class Main {
                 map[i][j] = Integer.parseInt(st.nextToken());
             }
         }
-        
+
         while(true){
             visited = new boolean[N][N];
-            boolean isMoved = false;
 
             list = new ArrayList<>();
 
@@ -62,7 +58,7 @@ public class Main {
             }
 
             if(list.isEmpty()) break;
-            if(!Move()) break;
+            Move();
             count++;
         }
         System.out.println(count);
@@ -70,7 +66,7 @@ public class Main {
 
     private static ArrayList<Node> unionCheck(int x, int y) {
         ArrayList<Node> union = new ArrayList<>();
-        Queue<Node> q = new LinkedList<>();
+        Queue<Node> q = new ArrayDeque<>();
         Node start = new Node(x, y);
         q.add(start);
         visited[x][y] = true;
