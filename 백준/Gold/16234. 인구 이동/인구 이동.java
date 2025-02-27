@@ -94,7 +94,7 @@ public class Main {
         return union;
     }
 
-    private static boolean Move() {
+    private static void Move() {
         boolean flag = false;
         for (ArrayList<Node> nodes : list) {
             int sum = 0;
@@ -107,7 +107,6 @@ public class Main {
             }
             flag = true;
         }
-        return flag;
     }
 
     public static class Node{
