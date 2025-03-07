@@ -27,6 +27,10 @@
 |1861. 정사각형 방|[링크](./SWEA/D4/1861.%E2%80%85%EC%A0%95%EC%82%AC%EA%B0%81%ED%98%95%E2%80%85%EB%B0%A9/README.md)|
 |1868. 파핑파핑 지뢰찾기|[링크](./SWEA/D4/1868.%E2%80%85%ED%8C%8C%ED%95%91%ED%8C%8C%ED%95%91%E2%80%85%EC%A7%80%EB%A2%B0%EC%B0%BE%EA%B8%B0/README.md)|
 |7733. 치즈 도둑|[링크](./SWEA/D4/7733.%E2%80%85%EC%B9%98%EC%A6%88%E2%80%85%EB%8F%84%EB%91%91/%EC%B9%98%EC%A6%88%E2%80%85%EB%8F%84%EB%91%91.java)|
+### 🚀 Unrated
+| 문제번호 | 링크 |
+| ----- | ----- |
+|2382. ［모의 SW 역량테스트］ 미생물 격리|[링크](./SWEA/Unrated/2382.%E2%80%85%EF%BC%BB%EB%AA%A8%EC%9D%98%E2%80%85SW%E2%80%85%EC%97%AD%EB%9F%89%ED%85%8C%EC%8A%A4%ED%8A%B8%EF%BC%BD%E2%80%85%EB%AF%B8%EC%83%9D%EB%AC%BC%E2%80%85%EA%B2%A9%EB%A6%AC/README.md)|
 ## 📚 백준
 ### 🚀 Bronze
 | 문제번호 | 링크 |
