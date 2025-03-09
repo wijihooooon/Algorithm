@@ -8,49 +8,48 @@ public class Main {
 
 	public static int N, M;
 	
-	public static int arr[];
-	public static int num[];
-	public static boolean isused[];
+	public static int[] arr;
+	public static boolean visited[];
+	public static int[] temp;
 	
-	public static void main(String[] args) throws IOException{
+	public static StringBuilder sb;
+	
+	public static void main(String[] args)throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
+		sb = new StringBuilder();
 		
 		N = Integer.parseInt(st.nextToken());
 		M = Integer.parseInt(st.nextToken());
 		
-		num = new int[N];
-		isused = new boolean[10001];
-		arr = new int[10];
+		arr = new int[N];
+		visited = new boolean[N];
+		temp = new int[M];
 		
 		st = new StringTokenizer(br.readLine());
 		for(int i=0; i<N; i++) {
-			num[i] = Integer.parseInt(st.nextToken());
+			arr[i] = Integer.parseInt(st.nextToken());
 		}
-		
-		Arrays.sort(num);
-		
-		func(0);
-		
+		Arrays.sort(arr);
+		dfs(0);
+		System.out.println(sb);
 	}
 
-	private static void func(int x) {
-		if(x == M) {
+	private static void dfs(int cnt) {
+		if(cnt == M) {
 			for(int i=0; i<M; i++) {
-				System.out.print(arr[i] + " ");
+				sb.append(temp[i]).append(" ");
 			}
-			System.out.println();
+			sb.append("\n");
 			return;
 		}
 		
 		for(int i=0; i<N; i++) {
-			if(!isused[num[i]]) {
-				arr[x] = num[i];
-				isused[num[i]] = true;
-				func(x+1);
-				isused[num[i]] = false;
-			}
+			if(visited[i]) continue;
+			visited[i] = true;
+			temp[cnt] = arr[i];
+			dfs(cnt+1);
+			visited[i] = false;
 		}
-		
 	}
 }
