@@ -10,7 +10,6 @@ public class Main {
 	
 	public static int[] arr;
 	public static int[] temp;
-	public static boolean visited[];
 	
 	public static StringBuilder sb;
 	
@@ -24,7 +23,6 @@ public class Main {
 		
 		arr = new int[N];
 		temp = new int[M];
-		visited = new boolean[N];
 		
 		st = new StringTokenizer(br.readLine());
 		for(int i=0; i<N; i++) {
@@ -47,11 +45,8 @@ public class Main {
 		}
 		
 		for(int i=start; i<N; i++) {
-			if(visited[i]) continue;
 			temp[cnt] = arr[i];
-			visited[i] = true;
 			dfs(i+1, cnt+1);
-			visited[i] = false;
 		}
 	}
 }
