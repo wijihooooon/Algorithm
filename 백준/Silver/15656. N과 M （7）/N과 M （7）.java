@@ -8,46 +8,45 @@ public class Main {
 
 	public static int N, M;
 	
-	public static int arr[];
-	public static int num[];
-	public static boolean isused[];
+	public static int[] arr;
+	public static int[] temp;
 	
-	public static StringBuilder sb = new StringBuilder();
+	public static StringBuilder sb;
 	
-	public static void main(String[] args) throws IOException{
+	public static void main(String[] args)throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
+		sb = new StringBuilder();
 		
 		N = Integer.parseInt(st.nextToken());
 		M = Integer.parseInt(st.nextToken());
 		
+		temp = new int[M];
 		arr = new int[N];
-		num = new int[N];
-		isused = new boolean[10001];
 		
 		st = new StringTokenizer(br.readLine());
 		for(int i=0; i<N; i++) {
-			num[i] = Integer.parseInt(st.nextToken());
+			arr[i] = Integer.parseInt(st.nextToken());
 		}
 		
-		Arrays.sort(num);
+		Arrays.sort(arr);
 		
-		func(0);
+		dfs(0);
 		System.out.println(sb);
 	}
 
-	private static void func(int x) {
-		if(x == M) {
+	private static void dfs(int cnt) {
+		if(cnt == M) {
 			for(int i=0; i<M; i++) {
-				sb.append(num[arr[i]]).append(" ");
+				sb.append(temp[i]).append(" ");
 			}
 			sb.append("\n");
 			return;
 		}
 		
 		for(int i=0; i<N; i++) {
-			arr[x] = i;
-			func(x+1);
+			temp[cnt] = arr[i];
+			dfs(cnt+1);
 		}
 	}
 }
