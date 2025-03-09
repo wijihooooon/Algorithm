@@ -6,43 +6,40 @@ import java.util.StringTokenizer;
 public class Main {
 
 	public static int N, M;
-	public static StringBuilder sb = new StringBuilder();
-	public static int arr[];
-	public static boolean isused[];
 	
-	public static void main(String[] args) throws IOException{
+	public static boolean[] visited;
+	public static int[] temp;
+	
+	public static StringBuilder sb;
+	
+	public static void main(String[] args)throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
+		
+		sb = new StringBuilder();
 		
 		N = Integer.parseInt(st.nextToken());
 		M = Integer.parseInt(st.nextToken());
 		
-		arr = new int[N+1];
-		isused = new boolean[N+1];
+		visited = new boolean[N+1];
+		temp = new int[N+1];
 		
-		func(0);
+		dfs(1, 0);
 		System.out.println(sb);
 	}
 
-	private static void func(int k) {
-		if(M == k) {
+	private static void dfs(int start, int cnt) {
+		if(cnt == M) {
 			for(int i=0; i<M; i++) {
-				sb.append(arr[i]).append(" ");
+				sb.append(temp[i]).append(" ");
 			}
 			sb.append("\n");
 			return;
 		}
 		
-		int st = 1;
-		if(k != 0) {
-			st = arr[k-1];
+		for(int i=start; i<=N; i++) {
+			temp[cnt] = i;
+			dfs(i, cnt+1);
 		}
-		
-		for(int i=st; i<=N; i++) {
-			arr[k] = i;
-			func(k+1);
-		}
-
 	}
-
 }
