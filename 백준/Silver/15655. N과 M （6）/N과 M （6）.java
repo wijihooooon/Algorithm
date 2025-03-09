@@ -7,52 +7,51 @@ import java.util.StringTokenizer;
 public class Main {
 
 	public static int N, M;
-	public static int arr[];
-	public static int num[];
-	public static boolean isused[];
 	
-	public static void main(String[] args) throws IOException{
+	public static int[] arr;
+	public static int[] temp;
+	public static boolean visited[];
+	
+	public static StringBuilder sb;
+	
+	public static void main(String[] args)throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
+		sb = new StringBuilder();
 		
 		N = Integer.parseInt(st.nextToken());
 		M = Integer.parseInt(st.nextToken());
 		
-		arr = new int[9];
-		num = new int[N];
-		isused = new boolean[10001];
+		arr = new int[N];
+		temp = new int[M];
+		visited = new boolean[N];
 		
 		st = new StringTokenizer(br.readLine());
 		for(int i=0; i<N; i++) {
-			num[i] = Integer.parseInt(st.nextToken());
+			arr[i] = Integer.parseInt(st.nextToken());
 		}
 		
-		Arrays.sort(num);
+		Arrays.sort(arr);
+		dfs(0, 0);
 		
-		func(0);
+		System.out.println(sb);
 	}
 
-	private static void func(int x) {
-		if(x == M) {
+	private static void dfs(int start, int cnt) {
+		if(cnt == M) {
 			for(int i=0; i<M; i++) {
-				System.out.print(num[arr[i]] + " ");
+				sb.append(temp[i]).append(" ");
 			}
-			System.out.println();
+			sb.append("\n");
 			return;
 		}
 		
-		int st = 0;
-		if(x != 0) {
-			st = arr[x-1]+1;
-		}
-		
-		for(int i=st; i<N; i++) {
-			if(!isused[i]) {
-				arr[x] = i;
-				isused[i] = true;
-				func(x+1);
-				isused[i] = false;
-			}
+		for(int i=start; i<N; i++) {
+			if(visited[i]) continue;
+			temp[cnt] = arr[i];
+			visited[i] = true;
+			dfs(i+1, cnt+1);
+			visited[i] = false;
 		}
 	}
 }
