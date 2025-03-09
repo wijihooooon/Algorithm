@@ -4,37 +4,36 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class Main {
-	
+
 	public static int N, M;
-	public static int arr[] = new int[10];
-	public static boolean isused[] = new boolean[10];
-	public static StringBuilder sb = new StringBuilder();
-	
-	public static void main(String[] args) throws IOException{
+	public static int[] temp;
+	public static StringBuilder sb;
+	public static void main(String[] args)throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
+		sb = new StringBuilder();
 		
 		N = Integer.parseInt(st.nextToken());
 		M = Integer.parseInt(st.nextToken());
 		
-		func(0);
+		temp = new int[M];
+		
+		dfs(0);
 		System.out.println(sb);
 	}
 
-	private static void func(int x) {
-		if(x == M) {
+	private static void dfs(int cnt) {
+		if(cnt == M) {
 			for(int i=0; i<M; i++) {
-				sb.append(arr[i]).append(" ");
+				sb.append(temp[i]).append(" ");
 			}
 			sb.append("\n");
 			return;
 		}
 		
 		for(int i=1; i<=N; i++) {
-				arr[x] = i;
-				isused[i] = true;
-				func(x+1);
-				isused[i] = false;
+			temp[cnt] = i;
+			dfs(cnt+1);
 		}
 	}
 }
