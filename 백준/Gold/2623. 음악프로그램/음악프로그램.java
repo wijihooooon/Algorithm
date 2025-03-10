@@ -3,7 +3,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
@@ -14,14 +13,15 @@ public class Main {
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		StringBuilder sb = new StringBuilder();
 		
+		
 		int N = Integer.parseInt(st.nextToken());
 		int M = Integer.parseInt(st.nextToken());
 		
 		int[] deg = new int[N+1];
-		List<Integer>[] list = new ArrayList[N+1];
+		ArrayList<Integer> graph[] = new ArrayList[N+1];
 		
 		for(int i=1; i<=N; i++) {
-			list[i] = new ArrayList<>();
+			graph[i] = new ArrayList<>();
 		}
 		
 		for(int i=0; i<M; i++) {
@@ -30,7 +30,7 @@ public class Main {
 			int a = Integer.parseInt(st.nextToken());
 			for(int j=0; j<singer-1; j++) {
 				int b = Integer.parseInt(st.nextToken());
-				list[a].add(b);
+				graph[a].add(b);
 				deg[b]++;
 				a = b;
 			}
@@ -39,27 +39,28 @@ public class Main {
 		Queue<Integer> q = new ArrayDeque<>();
 		for(int i=1; i<=N; i++) {
 			if(deg[i] == 0) q.add(i);
+
 		}
 		
 		int count = 0;
 		
 		while(!q.isEmpty()) {
-			int cur = q.poll();
+			int now = q.poll();
 			count++;
-			sb.append(cur).append("\n");
+			sb.append(now).append("\n");
 			
-			for(int nxt : list[cur]) {
+			for(int nxt : graph[now]) {
 				deg[nxt]--;
 				if(deg[nxt] == 0) {
 					q.add(nxt);
 				}
 			}
 		}
-		if(count < N) {
-			System.out.println(0);
-		}else {
-			System.out.println(sb);
-		}
 		
+		if(count != N) {
+			System.out.println(0);
+		}else{
+			System.out.println(sb);
+		}	
 	}
 }
