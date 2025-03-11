@@ -208,6 +208,7 @@
 |9084. 동전|[링크](./%EB%B0%B1%EC%A4%80/Gold/9084.%E2%80%85%EB%8F%99%EC%A0%84/%EB%8F%99%EC%A0%84.java)|
 |9140. Přeprava materiálu|[링크](./%EB%B0%B1%EC%A4%80/Gold/9140.%E2%80%85P%C5%99eprava%E2%80%85materi%C3%A1lu/P%C5%99eprava%E2%80%85materi%C3%A1lu.java)|
 |9252. LCS 2|[링크](./%EB%B0%B1%EC%A4%80/Gold/9252.%E2%80%85LCS%E2%80%852/LCS%E2%80%852.java)|
+|9470. Strahler 순서|[링크](./%EB%B0%B1%EC%A4%80/Gold/9470.%E2%80%85Strahler%E2%80%85%EC%88%9C%EC%84%9C/README.md)|
 |9663. N－Queen|[링크](./%EB%B0%B1%EC%A4%80/Gold/9663.%E2%80%85N%EF%BC%8DQueen/README.md)|
 ### 🚀 Silver
 | 문제번호 | 링크 |
