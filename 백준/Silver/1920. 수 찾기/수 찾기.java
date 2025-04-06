@@ -6,49 +6,44 @@ import java.util.StringTokenizer;
 
 public class Main {
 
-	public static int N;
-	public static int arr[];
-	
-	public static void main(String[] args) throws IOException{
+	public static void main(String[] args)throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		N = Integer.parseInt(br.readLine());
-		StringTokenizer st = new StringTokenizer(br.readLine());
+		StringTokenizer st;
 		
-		arr = new int[N];
-		
+		int N = Integer.parseInt(br.readLine());
+		int[] arr = new int[N];
+	
+		st = new StringTokenizer(br.readLine());
 		for(int i=0; i<N; i++) {
 			arr[i] = Integer.parseInt(st.nextToken());
 		}
 		
-		int M = Integer.parseInt(br.readLine());
-		
 		Arrays.sort(arr);
 		
+		int M = Integer.parseInt(br.readLine());
 		st = new StringTokenizer(br.readLine());
 		for(int i=0; i<M; i++) {
-			binarySearch(Integer.parseInt(st.nextToken()));
+			binarySearch(arr, Integer.parseInt(st.nextToken()));
 		}
-		
 	}
 
-	private static void binarySearch(int key) {
-		int left = 0;
-		int right = N-1;
+	private static void binarySearch(int[] arr, int target) {
+		int start = 0;
+		int end = arr.length-1;
 		
-		while(left <= right) {
+		while(start<=end) {
+			int mid = (start + end) / 2;
 			
-			int mid = (left + right) / 2; // 중간 값
-			
-			if(key < arr[mid]) { // 중간 값 보다 작은 경우
-				right = mid - 1;
-			}else if(key > arr[mid]) { // 중간 값 보다 큰 경우
-				left = mid + 1;
-			}else { // 중간 값과 같은 경우
+			if(arr[mid] == target){
 				System.out.println(1);
 				return;
+			}else if(arr[mid] < target) {
+				start = mid + 1;
+			}else {
+				end = mid - 1;
 			}
 		}
 		System.out.println(0);
+		return;
 	}
-
 }
