@@ -1,54 +1,56 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main {
 
-	public static void main(String[] args) throws IOException{
+	public static void main(String[] args)throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		
 		int N = Integer.parseInt(st.nextToken());
 		int M = Integer.parseInt(st.nextToken());
-		int max = 0;
 		
-		int arr[] = new int[N];
+		int[] tree = new int[N];
 		
 		st = new StringTokenizer(br.readLine());
 		for(int i=0; i<N; i++) {
-			arr[i] = Integer.parseInt(st.nextToken());
-			max = Math.max(max, arr[i]);
+			tree[i] = Integer.parseInt(st.nextToken());
 		}
 		
-		System.out.println(binarySerach(arr, M, max));
+		Arrays.sort(tree);
+		cutTheTree(tree, M);
 	}
 
-	private static int binarySerach(int[] arr, int M, int max) {
-		int start = 1;
-		int end = max;
-		int result = 0;
+	private static void cutTheTree(int[] tree, int M) {
+		int start = 0;
+		int end = tree[tree.length-1];
+		int result  = 0;
 		
-		while(start <= end) {
-			int mid = start + (end - start) / 2; // 오버플로우 방지
+		while(start<=end) {
+			int mid = (start + end) / 2;
 			
-			long sum = 0;
-			for(int i=0; i<arr.length; i++) {
-				if(arr[i] >= mid) {
-					sum += arr[i] - mid;
-				}
-			}
-			
-			if(sum >= M) { // 가져 가야하는 나무 길이 이상 벌목 하는 경우
+			if(isPossible(tree, mid, M)) {
 				result = mid;
 				start = mid + 1;
 			}else {
 				end = mid - 1;
 			}
 		}
-		
-		return result;
-		
+		System.out.println(result);
 	}
 
+	private static boolean isPossible(int[] tree, int mid, int M) {
+		long sum = 0;
+		
+		for(int h : tree) {
+			if(h>mid) {
+				sum += h - mid;
+			}
+		}
+		
+		return sum >= M;
+	}
 }
