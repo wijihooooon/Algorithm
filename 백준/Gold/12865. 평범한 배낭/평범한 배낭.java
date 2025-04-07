@@ -5,41 +5,33 @@ import java.util.StringTokenizer;
 
 public class Main {
 
-    public static int[] W;
-    public static int[] V;
-    public static Integer[][] dp;
-
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
-
-        int N = Integer.parseInt(st.nextToken());
-        int K = Integer.parseInt(st.nextToken());
-
-        W = new int[N];
-        V = new int[N];
-
-        dp = new Integer[N][K+1];
-        
-        for(int i=0; i<N; i++){
-            st = new StringTokenizer(br.readLine());
-            W[i] = Integer.parseInt(st.nextToken());
-            V[i] = Integer.parseInt(st.nextToken());
-        }
-
-        System.out.println(knapsack(N-1, K));
-    }
-
-    private static int knapsack(int i, int k) {
-        if(i<0) return 0;
-
-        if(dp[i][k] == null){
-            if(W[i] > k){
-                dp[i][k] = knapsack(i-1, k);
-            }else{
-                dp[i][k] = Math.max(knapsack(i-1, k), knapsack(i-1, k-W[i]) + V[i]);
-            }
-        }
-        return dp[i][k];
-    }
+	public static void main(String[] args)throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		
+		int N = Integer.parseInt(st.nextToken());
+		int M = Integer.parseInt(st.nextToken());
+		
+		int[] weight = new int[N+1];
+		int[] value = new int[N+1];
+		
+		for(int i=1; i<=N; i++) {
+			st = new StringTokenizer(br.readLine());
+			weight[i] = Integer.parseInt(st.nextToken());
+			value[i] = Integer.parseInt(st.nextToken());
+		}
+		
+		int[][] dp = new int[N+1][M+1];
+		
+		for(int i=1; i<=N; i++) {
+			for(int j=0; j<=M; j++) {
+				if(weight[i] > j) {
+					dp[i][j] = dp[i-1][j];
+				}else {
+					dp[i][j] = Math.max(dp[i-1][j], dp[i-1][j-weight[i]] + value[i]);
+				}
+			}
+		}
+		System.out.println(dp[N][M]);
+	}
 }
