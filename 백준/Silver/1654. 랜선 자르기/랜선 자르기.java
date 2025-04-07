@@ -6,48 +6,47 @@ import java.util.StringTokenizer;
 
 public class Main {
 
-	public static int N, K;
-	public static int arr[]; 
-	
-	public static void main(String[] args) throws IOException{
+	public static void main(String[] args)throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		
-		K = Integer.parseInt(st.nextToken());
-		N = Integer.parseInt(st.nextToken());
+		int N = Integer.parseInt(st.nextToken());
+		int M = Integer.parseInt(st.nextToken());
 		
-		arr = new int[K];
+		int[] LAN = new int[N];
 		
-		for(int i=0; i<K; i++) {
-			arr[i] = Integer.parseInt(br.readLine());
+		for(int i=0; i<N; i++) {
+			LAN[i] = Integer.parseInt(br.readLine());
 		}
 		
-		Arrays.sort(arr);
-		
-		System.out.println(binarySerach());
+		Arrays.sort(LAN);
+		measureTheDistance(LAN, M);
 	}
 
-	private static long binarySerach() {
-		long left = 1;
-		long right = arr[K-1];
-		long ans = 0;
+	private static void measureTheDistance(int[] LAN, int M) {
+		long start = 1;
+		long end = LAN[LAN.length-1];
+		long result = 0;
 		
-		while(left <= right) {
-			long mid = (left + right) / 2;
-			long sum = 0;
+		while(start<=end) {
+			long mid = start + (end - start) / 2;
 			
-			for(int i=0; i<K; i++) {
-				sum += arr[i] / mid;
-			}
-			
-			if(sum >= N) {
-				ans = mid;
-				left = mid + 1;
+			if(isPossible(LAN, M, mid)) {
+				result = mid;
+				start = mid + 1;
 			}else {
-				right = mid - 1;
+				end = mid - 1;
 			}
 		}
-		return ans;
+		System.out.println(result);
 	}
 
+	private static boolean isPossible(int[] LAN, int M, long mid) {
+		int count = 0;
+		
+		for(int dis : LAN) {
+			count += dis/mid;
+		}
+		return count>=M;
+	}
 }
