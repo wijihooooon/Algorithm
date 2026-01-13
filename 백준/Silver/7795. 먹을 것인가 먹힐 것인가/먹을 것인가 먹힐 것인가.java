@@ -35,7 +35,6 @@ public class Main {
                 }
                 ans += j;
             }
-
             sb.append(ans).append('\n');
         }
         System.out.print(sb);
