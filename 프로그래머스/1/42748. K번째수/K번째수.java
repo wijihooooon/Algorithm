@@ -3,19 +3,22 @@ import java.util.*;
 class Solution {
     public int[] solution(int[] array, int[][] commands) {
         int[] answer = new int[commands.length];
-        
         int[] arr;
-        int index = 0;
+        
         for(int i=0; i<commands.length; i++){
-            arr = new int[commands[i][1] - commands[i][0] + 1];
+            int num1 = commands[i][0];
+            int num2 = commands[i][1];
+            int num3 = commands[i][2];
             
-            int idx = 0;
-            for(int j=commands[i][0]-1; j<commands[i][1]; j++){
-                arr[idx++] = array[j];
+            arr = new int[num2-num1+1];
+
+            for(int l=0, m=num1-1; l<num2-num1+1; l++, m++){
+                arr[l] = array[m];
             }
             
             Arrays.sort(arr);
-            answer[index++] = arr[commands[i][2] - 1];
+            
+            answer[i] = arr[num3-1];
         }
         
         return answer;
