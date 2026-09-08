@@ -4,16 +4,18 @@ class Solution {
     public int solution(int[] nums) {
         int answer = 0;
         
-        Set<Integer> set = new HashSet<>();
+        Set<Integer>set = new HashSet<>();
         
         for(int i=0; i<nums.length; i++){
             set.add(nums[i]);
         }
         
-        if(nums.length / 2 <= set.size()){
-            return nums.length/2;
+        if(nums.length/2 < set.size()){
+            answer = nums.length/2;
+        }else{
+            answer = set.size();
         }
         
-        return set.size();
+        return answer;
     }
 }
