@@ -3,18 +3,24 @@ import java.util.*;
 class Solution {
     public int solution(int[][] sizes) {
         int answer = 0;
-        int maxL = 0;
-        int maxR = 0;
+        
+        int maxLeft = 0;
+        int maxRight = 0;
+        
         for(int i=0; i<sizes.length; i++){
-               if(sizes[i][0] > sizes[i][1]){
-                   maxL = Math.max(maxL, sizes[i][0]);
-                   maxR = Math.max(maxR, sizes[i][1]);
-               }else{
-                   maxL = Math.max(maxL, sizes[i][1]);
-                   maxR = Math.max(maxR, sizes[i][0]);
-               }
+            int left = sizes[i][0];
+            int right = sizes[i][1];
+            
+            if(left < right){
+                maxLeft = Math.max(maxLeft, right);
+                maxRight = Math.max(maxRight, left);
+            }else{
+                maxLeft = Math.max(maxLeft, left);
+                maxRight = Math.max(maxRight, right);
+            }
         }
-        answer = maxL * maxR;
+        
+        answer = maxLeft * maxRight;
         
         return answer;
     }
