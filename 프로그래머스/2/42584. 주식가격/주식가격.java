@@ -3,21 +3,19 @@ import java.util.*;
 class Solution {
     public int[] solution(int[] prices) {
         int[] answer = new int[prices.length];
-        ArrayDeque<Integer> dq = new ArrayDeque<>();
-        dq.offerLast(0);
     
-        for(int i=1; i<prices.length; i++){
-            int price = prices[i];
-            int size = dq.size();
-            
-            for(int j=0; j<size; j++){
-                int idx = dq.pollFirst();
-                answer[idx]++;
-                if(prices[idx] <= price){
-                    dq.offerLast(idx);
+        for(int i=0; i<prices.length; i++){
+            int nowP = prices[i];
+            int sec = 0;
+            for(int j=i+1; j<prices.length; j++){
+                sec++;
+                
+                if(nowP > prices[j]){
+                    break;
                 }
             }
-            dq.offerLast(i);
+            
+            answer[i] = sec;
         }
         
         return answer;
