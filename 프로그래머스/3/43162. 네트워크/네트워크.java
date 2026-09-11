@@ -2,57 +2,51 @@ import java.util.*;
 
 class Solution {
     
-    public static List<Integer>[] graph;
-    public static boolean[] visited;
-    public static Deque<Integer> dq;
+    public List<Integer>[] graph;
+    public boolean[] visited;
     
     public int solution(int n, int[][] computers) {
         int answer = 0;
         
-        graph = new ArrayList[n];
         visited = new boolean[n];
+        graph = new ArrayList[n];
         
         for(int i=0; i<n; i++){
             graph[i] = new ArrayList<>();
         }
         
-        for(int i=0; i<n; i++){
-            int a = i;
-            for(int j=0; j<n; j++){
-                if(i == j || computers[i][j] == 0) continue; // 자기 자신이거나 연결되어있지않으면 x
-                int b = j;
+        for(int i=0; i<computers.length; i++){
+            for(int j=0; j<computers[0].length; j++){
+                if(i==j ||computers[i][j] == 0) continue;
                 
-                graph[a].add(b);
-                graph[b].add(a);
-                
+                graph[i].add(j);
             }
         }
         
         for(int i=0; i<n; i++){
-            if(visited[i]) continue;
-            answer++;
-            visited[i] = true;
-            bfs(i);
+            if(!visited[i]){
+                bfs(i);
+                answer++;
+            }
         }
         return answer;
     }
     
-    public void bfs(int node){
-        dq = new ArrayDeque<>();
-        dq.addFirst(node);
+    public void bfs(int start){
+        Queue<Integer> q = new ArrayDeque<>();
         
-        while(!dq.isEmpty()){
-            int now = dq.pollFirst();
+        q.offer(start);
+        visited[start] = true;
+        
+        while (!q.isEmpty()) {
+            int cur = q.poll();
             
-            for(int i=0; i<graph[now].size(); i++){
-                int nextNode = graph[now].get(i);
+            for (int next : graph[cur]) {
+                if (visited[next]) continue;
                 
-                if(visited[nextNode]) continue;
-                
-                visited[nextNode] = true;
-                dq.addLast(nextNode);
+                visited[next] = true;
+                q.offer(next);
             }
-        }      
+        }
     }
-    
 }
