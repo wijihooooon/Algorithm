@@ -12,12 +12,8 @@ class Solution {
         
         int A = cal(numberA, arrayA, arrayB);
         int B = cal(numberB, arrayB, arrayA);
-        
-        if(A == 0 && B == 0){
-            answer = 0;
-        }else{
-            answer = Math.max(A, B);
-        }
+       
+        answer = Math.max(A, B); 
         
         return answer;
     }
