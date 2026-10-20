@@ -17,7 +17,7 @@ class Solution {
                 return headCompare;
             }
 
-            return numberA - numberB;
+            return Integer.compare(numberA, numberB);
         });
         
         answer = files;
