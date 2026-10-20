@@ -51,7 +51,6 @@ class Solution {
                     pq.add(nextNode);
                 }
             }
-            
         }
         
         return dist;
