@@ -1,68 +1,71 @@
-import java.util.*;
-
 class Solution {
     public long[] solution(long[] numbers) {
-        long[] answer = new long[numbers.length];
+        long[] answer = {};
         
-        for(int i=0; i<numbers.length; i++){
-            StringBuilder number = toBinary(numbers[i]);
-            String num = number.toString();
+        answer = new long[numbers.length];
+        
+        for(int i=0; i< numbers.length; i++){
+            long number = numbers[i];
             
-            for(int j=num.length()-1; j>=0; j--){
-                
-                char n = num.charAt(j);
-                
-                if(j == num.length()-1 && n == '0'){
-                    number.setCharAt(num.length()-1, '1');
-                    break;
-                }else if(j == 0 && n == '1'){
-                    number.insert(0, '1');
-                    number.setCharAt(1, '0');
-                }else if(n == '0'){
-                    number.setCharAt(j, '1');
-                    number.setCharAt(j+1, '0');
-                    break;
+            // 이진화
+            String binary = toBinary(number);
+            
+            // 다른비트 찾기
+            // i) 0의 위치를 찾기
+            int zero = -1;
+            for(int j=0; j<binary.length(); j++){
+                if(binary.charAt(j) == '0'){
+                    zero = j;
                 }
             }
-            answer[i] = toDecimal(number.toString());   
-        }
-        
+            
+            if(zero == -1){                         // ii) 0이 없으면 맨앞에 1을 추가하고 그 뒷자리를 0으로 변경
+                binary = "10" + binary.substring(1);
+            }else if(zero == binary.length() - 1){  // iii) 0이 맨뒤에 있으면 1로 변경
+                binary = binary.substring(0, zero) + "1";
+            }else{                                  // iii) 0이 중간에 있으면 1로 변경하고 뒷자리의 1을 0으로 변경
+                binary = binary.substring(0, zero)
+                        + "10"
+                        + binary.substring(zero + 2);
+            }            
+            
+            // 정수화
+            long ans = toDigit(binary);
+            
+            answer[i] = ans;
+        } 
         return answer;
     }
     
-    public StringBuilder toBinary(long num){
+    public String toBinary(long number){
         StringBuilder sb = new StringBuilder();
         
-        long number = num;
-        if(number == 0){
-            sb.append(0);
-            return sb;
-        }
-        while(number != 0){
-            if(number % 2 == 1){
-                sb.append(1);
-            }else{
+        if(number == 0) return "0";
+        
+        while(number != 1){
+            if(number%2 == 0){
                 sb.append(0);
+            }else{
+                sb.append(1);
             }
             
             number /= 2;
         }
         
-        return sb.reverse();
-    }
-    
-    public long toDecimal(String num){
-        long sum = 0;
-        long mul = 1;
-        
-        for(int i=num.length()-1; i>=0; i--){
-            if(num.charAt(i) == '1'){
-                sum += mul;
-            }
-            
-            mul *= 2;
+        if(number == 1){
+            sb.append(1);
         }
         
-        return sum;
+        return sb.reverse().toString();
+    }
+    
+    public long toDigit(String binary){
+        long num = 0;
+        
+        for (int i = 0; i < binary.length(); i++) {
+            num = num * 2 + (binary.charAt(i) - '0');
+        }
+        
+        return num;
     }
 }
