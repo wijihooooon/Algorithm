@@ -22,6 +22,7 @@ class Solution {
             }
         }
         
+        // 마지막 줄을 순회하면서 최대값 탐색
         for(int i=0; i<N; i++){
             answer = Math.max(answer, dp[N-1][i]);
         }
