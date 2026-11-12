@@ -5,9 +5,8 @@ class Solution {
         int answer = 0;
         
         int N = triangle.length;
-        int M = triangle.length;
         
-        int[][] dp = new int[N][M];
+        int[][] dp = new int[N][N];
         dp[0][0] = triangle[0][0];
         
         for(int i=1; i<N; i++){
@@ -23,7 +22,7 @@ class Solution {
             }
         }
         
-        for(int i=0; i<M; i++){
+        for(int i=0; i<N; i++){
             answer = Math.max(answer, dp[N-1][i]);
         }
         
